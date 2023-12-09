@@ -1,5 +1,7 @@
 name: Lint Push
 run-name: ${{ github.actor }} is testing linter
+
+---
 on: [push] #we can add multiple actions here in an array
 
 jobs:
