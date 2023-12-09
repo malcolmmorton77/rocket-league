@@ -3,7 +3,8 @@ run-name: ${{ github.actor }} is testing linter
 on: [push]
 jobs:
   Lint Push:
-  runs-on: ubuntu-latest
+  runs-on: [ubuntu-latest]
+
   steps:
     - name: Checkout Code
     uses: actions/checkout@v4
