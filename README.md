@@ -1,3 +1,3 @@
 # testghactions
 
-Used for testing github actions default code
+Used for testing GitHub actions default code

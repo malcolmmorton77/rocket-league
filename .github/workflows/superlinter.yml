@@ -1,22 +1,17 @@
 name: Lint Push
 run-name: ${{ github.actor }} is testing linter
-
----
 on: [push] #we can add multiple actions here in an array
-
 jobs:
-  build:
-    name: Lint Push
-    runs-on: ubuntu-latest
-
-    steps:
-      # before running the linter, we need to checkout the code
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  
-      
-      - name: Lint Push
-        uses: github/super-linter@v4
-      
-      GITHUB-TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  name: Lint Push
+  runs-on: ubuntu-latest
+  steps:
+    # before running the linter, we need to checkout the code
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  
+    
+    - name: Lint Push
+      uses: github/super-linter@v4
+    
+    GITHUB-TOKEN: ${{ secrets.GITHUB_TOKEN }}
