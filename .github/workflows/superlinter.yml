@@ -2,14 +2,13 @@ name: Lint Push
 run-name: ${{ github.actor }} is testing linter
 on: [push]
 jobs:
-  runs-on: [ubuntu-latest]
-
-  steps:
-    - name: Checkout Code
-    uses: actions/checkout@v4
-    with:
-      fetch-depth: 0  
-    - name: Lint Push
-    uses: github/super-linter@v4
-    
-    GITHUB-TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: SuperLinter
+      - run: github/super-linter@v4
+      - run: echo "🍏 This job's status is ${{ job.status }}."
