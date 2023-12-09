@@ -16,3 +16,5 @@ jobs:
       
       - name: Lint Push
         uses: github/super-linter@v4
+      
+      GITHUB-TOKEN: ${{ secrets.GITHUB_TOKEN }}
