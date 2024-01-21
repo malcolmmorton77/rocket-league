@@ -1,3 +1,4 @@
+---
 name: Lint Push
 run-name: ${{ github.actor }} is testing linter
 on: [push]
@@ -13,3 +14,4 @@ jobs:
       - name: Super Linter
         uses: super-linter/super-linter@v5.7.2 
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      
