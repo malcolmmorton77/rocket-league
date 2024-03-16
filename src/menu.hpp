@@ -19,6 +19,7 @@ public:
     int getGoals() const { return goals; }
     int getAssists() const { return assists; }
     int getSaves() const { return saves; }
+    int getShots() const { return shots; }
     
 };
 
