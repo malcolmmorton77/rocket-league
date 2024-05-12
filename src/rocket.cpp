@@ -2,6 +2,7 @@
 #include <sstream> //std::stringstream; std::stringbuf
 #include <string> //std::string
 #include <fstream> //ifstream
+#include <vector>
 #include "menu.hpp"
 
 int main(int num_args, char *arg_string[]){
@@ -17,23 +18,25 @@ int main(int num_args, char *arg_string[]){
     std::string csv_name = arg_string[1];
     std::ifstream csv_reader;
     std::string line;
+    std::vector<Menu> player_list;
+    std::string header;
     
     csv_reader.open(csv_name, std::ifstream::in); //open the file
-    std::getline(csv_reader, line); //throw the header out?
+    std::getline(csv_reader, line); //throw the header out
+    header = line;
     if(csv_reader.is_open()){
         while(std::getline(csv_reader, line)){
             Menu a{};
             a.assignValues(line);
+            player_list.push_back(a);
             std::cout << "Assigned values for " << line << std::endl;
         }
     }
 
+    for(std::vector<Menu>::iterator it = player_list.begin(); it < player_list.end(); it++)
+        it->print();
 
     csv_reader.close();
 
-    Menu a{}; // empty parentheses were disambiguated as a function declaration, use {}
-    Menu m{"Eaurius", 773, 4, 2, 0, 7};
-    a.print();
-    m.print();
     return 0;
 }
