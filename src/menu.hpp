@@ -4,7 +4,7 @@
 class Menu
 {
 private:
-    std::string name{}; 
+    std::string name{};
     int score{};
     int goals{};
     int assists{};
