@@ -28,8 +28,10 @@ int main(int num_args, char *arg_string[]){
         while(std::getline(csv_reader, line)){
             Menu a{};
             a.assignValues(line);
+            int ht = a.hatTrickPoints();
+            std::cout << "Assigned values for " << line << "\n================\n";
+            std::cout << "Points from Hat Tricks: " << ht << std::endl;
             player_list.push_back(a);
-            std::cout << "Assigned values for " << line << std::endl;
         }
     }
 

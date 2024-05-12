@@ -2,6 +2,7 @@
 #include <boost/algorithm/string.hpp>
 #include <vector>
 #include "menu.hpp"
+#include <math.h>
 
 Menu::Menu(std::string name, int score, int goals, int assists, int saves, int shots){
     this->name = name;
@@ -22,6 +23,10 @@ void Menu::assignValues(std::string line){
     assists = stoi(values[3]);
     saves = stoi(values[4]);
     shots = stoi(values[5]);
+}
+
+int Menu::hatTrickPoints() const{
+    return floor(goals/3) * 25;
 }
 
 Menu::~Menu(){};
