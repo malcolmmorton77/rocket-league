@@ -33,6 +33,29 @@ centering and clearing balls.
 - Ball touches: 2 pts
 - Extermination (demolish players 7 times): 20 pts
 
+Then, these datums will be used to calculate as much of the accounted for points as possible.
+By subtracting these accounted for points from the total score, we can get the points earned
+from ball touches (2 pts per touch, unless from a first touch), epic saves, special goals, demolishing,
+centering and clearing balls.
+
+### Special Goals:
+Aerial Goals: 20 pts
+Backwards Goals: 20 pts
+Bicycle Goals: 20 pts
+Long Goal: 20 pts
+Turtle Goals: 20 pts
+Pool Shot: 20 pts
+Overtime Goal: 25 pts
+
+### Special Saves:
+Epic Save: 75 pts
+
+### Miscellaneous Field Points:
+Centering Balls: 10 pts
+Clearing Balls: 20 pts
+Ball touches: 2 pts
+Extermination (demolish players 7 times): 20 pts
+
 Thank you to https://www.fluentcpp.com/2018/01/30/most-vexing-parse/
 for helping me understand how clang and gcc parse parentheses and 
 the disambiguation of the parentheses by replacing an object declaration
