@@ -25,8 +25,36 @@ void Menu::assignValues(std::string line){
     shots = stoi(values[5]);
 }
 
+int Menu::goalPoints() const{
+    return goals * 100;
+}
+
 int Menu::hatTrickPoints() const{
     return floor(goals/3) * 25;
+}
+
+int Menu::savePoints() const{
+    return saves*50;
+}
+
+int Menu::saviorPoints() const{
+    return floor(saves/3) * 25;
+}
+
+int Menu::assistPoints() const{
+    return assists*50;
+}
+
+int Menu::playmakerPoints() const{
+    return floor(assists/3) * 25;
+}
+
+int Menu::shotPoints() const{
+    return shots * 10;
+}
+
+int Menu::miscPoints() const{
+    return score - (goalPoints() + hatTrickPoints()+ savePoints() + saviorPoints() + assistPoints() + playmakerPoints() + shotPoints());
 }
 
 Menu::~Menu(){};
