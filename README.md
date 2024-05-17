@@ -49,3 +49,22 @@ cmake ../src
 cd build
 cmake --build .
 ```
+
+### Analysis
+After looking at a lot of the data and replaying certain matches, I have developed a lot of insight on the mobility of the player:
+If the miscellaneous score, i.e. the score from centering and clearing balls, possible epic saves and special goals is under 50,
+the player either wasn't much contribution to the game. I would say they have low mobility. Now, I played with a bunch of bots to rack
+up the data so it would be interesting to see how actual players perform. For privacy purposes though, I don't want to commit those
+datums. For a misc score of 50-100, the player was fairly mobile and made a few plays, but generally they weren't the driving force behind
+the team. Anything from 100 to 200 for misc score was a very mobile player. This player would be setting up plays and centering or clearing
+balls. Now, above 200, I can't tell if that's because of the special goals and epic saves or if that's a series of thwarted attempts by the player
+and because the computer is counting the clearing and centering goals, it can count multiple instances of the player shooting or saving as they
+dance around the goal. So far, with the games I have played, it's been very difficult to get anywhere above 300 points in the misc category.
+
+
+| Score range | Mobility |
+| ----------- | -------- |
+|   0 - 50    |   low    |
+|  51 - 100   |  medium  |
+|  101 - 200  |   high   |
+|    201+     |   ????   |  
