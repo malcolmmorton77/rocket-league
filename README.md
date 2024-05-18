@@ -67,4 +67,22 @@ dance around the goal. So far, with the games I have played, it's been very diff
 |   0 - 50    |   low    |
 |  51 - 100   |  medium  |
 |  101 - 200  |   high   |
-|    201+     |   ????   |  
+|    201+     |   ????   |
+
+### Analysis 2.0
+Sometimes, a player can "steal" a goal from their teammate, as happened to me (twice?) in a championship game with bots.
+The bot finished my shot on goal by touching it before it went in, but I had already been credited the shot on goal.
+So, I was credited in the scoreboard with a shot on goal, but the bot had the goal.
+This can be seen in the data when the goals for a player are larger than their shots. From there, we can see that I would have those shots
+on goal. In this particular example, it's clear whose goals were stolen from who:
+
+|   Player  |   Goals   |   Shots   |
+| --------- | --------- | --------- |
+|   Me      |   4       |   8       |
+|   Chipper |   4       |   2       |
+|   Tex     |   2       |   2       |
+
+A simple check that this occurred is that a player has more goals than shots on goal.
+But, we can safely eliminate any players as being involved in this trade-off by comparing their
+goals and shots. If they are equal, it's realistic to say that every shot on goal was their goal.
+If they have extra shots on goal, we will have to account for that and spit out some ambiguity clause.
