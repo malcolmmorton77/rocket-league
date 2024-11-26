@@ -78,6 +78,9 @@ public:
      * description: prints the point breakdown of the player*/
     void printPoints() const;
 
+    /* name: printMatchPoints
+     * description: returns if the goals and saves are the same*/
+    void printMatchPoints() const;
 };
 
 #endif

@@ -80,3 +80,10 @@ void Menu::printPoints() const{
     std::cout << "Points from Shots: " << shotPoints() << " and Shots: " << shots << std::endl;
     std::cout << "Points from ball touches, special goals, epic saves, clearing and centering: " << miscPoints() << "\n\n";
 }
+
+void Menu::printMatchPoints() const{
+    if (goals != 0 && goals == saves)
+        std::cout << name << " returned every save for a goal against.\n";
+    else
+        std::cout << name << " was not as zealous about vengeance.\n";
+}

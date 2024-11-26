@@ -9,7 +9,8 @@ int main(int num_args, char *arg_string[]){
     //Grab csv name from arguments
     if(num_args != 2)
     {
-        std::cout << "Error, not the correct number of arguments.\n";
+        std::cout << "Error, not the correct number of arguments.\n"
+                  << "Usage: ./executable /path/to/data.csv\n";
         exit(1);
     }
     
@@ -35,7 +36,10 @@ int main(int num_args, char *arg_string[]){
     csv_reader.close();
 
     for(std::vector<Menu>::iterator it = player_list.begin(); it < player_list.end(); it++)
+    {
+        it->printMatchPoints();
         it->printPoints();
+    }
 
     return 0;
 }
