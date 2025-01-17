@@ -68,3 +68,15 @@ void Menu::print() const{
                 << "Saves: " << saves << "\n"
                 << "Shots: " << shots << "\n\n";
 };
+
+void Menu::printPoints() const{
+    std::cout << name << " finished the game with " << score << " pts." << std::endl;
+    std::cout << "Points from Goals: " << goalPoints()  << " and Goals: " << goals << std::endl;
+    std::cout << "Points from Hat Tricks: " << hatTrickPoints()  << " and Goals: " << goals << std::endl;
+    std::cout << "Points from Saves: " << savePoints() << " and Saves: " << saves << std::endl;
+    std::cout << "Points from Saviors: " << saviorPoints() << " and Saves: " << saves << std::endl;
+    std::cout << "Points from Assists: " << assistPoints() << " and Assists: " << assists << std::endl;
+    std::cout << "Points from Playmakers: " << playmakerPoints() << " and Assists: " << assists << std::endl;
+    std::cout << "Points from Shots: " << shotPoints() << " and Shots: " << shots << std::endl;
+    std::cout << "Points from ball touches, special goals, epic saves, clearing and centering: " << miscPoints() << "\n\n";
+}

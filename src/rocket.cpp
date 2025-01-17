@@ -28,25 +28,14 @@ int main(int num_args, char *arg_string[]){
         while(std::getline(csv_reader, line)){
             Menu a{};
             a.assignValues(line);
-
-            std::cout << a.getName() << " finished the game with " << a.getScore() << " pts." << std::endl;
-            std::cout << "Points from Goals: " << a.goalPoints()  << " and Goals: " << a.getGoals() << std::endl;
-            std::cout << "Points from Hat Tricks: " << a.hatTrickPoints()  << " and Goals: " << a.getGoals() << std::endl;
-            std::cout << "Points from Saves: " << a.savePoints() << " and Saves: " << a.getSaves() << std::endl;
-            std::cout << "Points from Saviors: " << a.saviorPoints() << " and Saves: " << a.getSaves() << std::endl;
-            std::cout << "Points from Assists: " << a.assistPoints() << " and Assists: " << a.getAssists() << std::endl;
-            std::cout << "Points from Playmakers: " << a.playmakerPoints() << " and Assists: " << a.getAssists() << std::endl;
-            std::cout << "Points from Shots: " << a.shotPoints() << " and Shots: " << a.getShots() << std::endl;
-            std::cout << "Points from ball touches, special goals, epic saves, clearing and centering: " << a.miscPoints() << "\n\n";
-            
             player_list.push_back(a);
         }
     }
 
-    // for(std::vector<Menu>::iterator it = player_list.begin(); it < player_list.end(); it++)
-    //     it->print();
-
     csv_reader.close();
+
+    for(std::vector<Menu>::iterator it = player_list.begin(); it < player_list.end(); it++)
+        it->printPoints();
 
     return 0;
 }

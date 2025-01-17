@@ -74,6 +74,10 @@ public:
      * description: returns the amount of points earned that can't be attributed to an action*/
     int miscPoints() const;
 
+    /* name: printPoints
+     * description: prints the point breakdown of the player*/
+    void printPoints() const;
+
 };
 
 #endif
