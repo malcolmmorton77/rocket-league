@@ -56,3 +56,33 @@ cmake --build --preset rocket-league
 The header of the csv should be comprised of "Player,Score,Goals,Assists,Saves,Shots"
 From here, I just inputted the raw data from each game I played with Bots as integers:
 Me,773,4,2,0,7
+
+### Analysis
+After looking at a lot of the data and replaying certain matches, I have developed a lot of insight on the mobility of the player.
+If the miscellaneous score (the score from centering and clearing balls, possible epic saves and special goals) is under 50, the player wasn't much contribution to the game unless they were goalie for most of the game.
+Now, I played with a bunch of bots to rack up the data so it would be interesting to see how actual players perform, but I don't want to commit real player names for privacy concerns. For a misc score of 50-100, the player had low mobility and made a few plays, but generally they weren't the driving force behind the team.
+Anything from 101 to 200 for misc score was a very mobile player. This player would be setting up plays and centering or clearing balls.
+From 201-300, this player is valuable to the team and creating soccer from zero. 
+Bots have never received more than 250 points in the miscellaneous category, so a team member with above 250 points in the misc category is probably a real person.
+
+
+| Score range | Mobility |
+| ----------- | -------- |
+|   0 - 50    |  imobile |
+|  51 - 100   |   low    |
+|  101 - 200  |  medium  |
+|  201-300    |   high   |
+|    301+     | valuable |
+
+### Analysis 2.0
+Sometimes, a player can "steal" a goal from their teammate, as happened to me twice in a championship game with bots. The bot finished my shot on goal by touching it before it went in, but I had already been credited the shot on goal, so I was credited in the scoreboard with a shot on goal, but the bot had the goal. Since the computer always attributes a shot on goal with a goal, no player should have more goals than shots on goal.
+This can be seen in the data when the goals for a player are larger than their shots. From there, we can see that I would have those shots on goal. In this particular example, it's clear whose goals were stolen from who:
+
+|   Player  |   Goals   |   Shots   |
+| --------- | --------- | --------- |
+|   Me      |   4       |   8       |
+|   Chipper |   4       |   2       |
+|   Tex     |   2       |   2       |
+
+A simple check that this occurred is that a player has more goals than shots on goal. We can safely eliminate any players as being involved in this trade-off by comparing their
+goals and shots. If they are equal, it's realistic to say that every shot on goal was their goal. If they have extra shots on goal, we will have to account for that and account for some ambiguity clause.
