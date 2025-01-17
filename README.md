@@ -39,13 +39,20 @@ To reference point structure in Rocket League, I used the [official page](https:
 
 ### To configure the build directory
 ```shell
-mkdir build
-cd build
-cmake ../src
+cmake --preset default
 ```
 
 ### To build the files
 ```shell
-cd build
-cmake --build .
+cmake --build --preset rocket-league
 ```
+
+### To run the program
+```shell
+./build/rocket-league /path/to/filename.csv
+```
+
+### Format of the csv
+The header of the csv should be comprised of "Player,Score,Goals,Assists,Saves,Shots"
+From here, I just inputted the raw data from each game I played with Bots as integers:
+Me,773,4,2,0,7
