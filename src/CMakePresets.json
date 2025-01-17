@@ -1,0 +1,22 @@
+{
+    "version": 8,
+    "configurePresets": [
+      {
+        "name": "default",
+        "displayName": "Default",
+        "generator": "Ninja",
+        "binaryDir": "../build/",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Default"
+        }
+      }
+    ],
+    "buildPresets": [
+    {
+      "name": "rocket-league",
+      "displayName": "Rocket League Calculator",
+      "configurePreset": "default",
+      "configuration": "Default"
+    }
+  ]
+  }
