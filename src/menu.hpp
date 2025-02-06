@@ -4,6 +4,7 @@
 class Menu
 {
 private:
+    std::string team_id{};
     std::string name{};
     int score{};
     int goals{};
@@ -15,7 +16,7 @@ public:
 
     /* name: Menu
     * description: default constructor*/
-    Menu(std::string="", int score=0, int goals=0, int assists=0, int saves=0, int shots=0);
+    Menu(std::string="", std::string="", int score=0, int goals=0, int assists=0, int saves=0, int shots=0);
 
     /* name: ~Menu
     * description: default destructor*/
@@ -32,6 +33,7 @@ public:
 
     /* list of getters
      * used to get particular data from the Menu objects*/
+    std::string getTeamId() const { return team_id; }
     std::string getName() const { return name; }
     int getScore() const { return score; }
     int getGoals() const { return goals; }
@@ -81,6 +83,10 @@ public:
     /* name: printMatchPoints
      * description: returns if the goals and saves are the same*/
     void printMatchPoints() const;
+
+    /* name: calculateStolenGoals
+     * description: calculates if there were any goals stolen and from who*/
+    bool calculateStolenGoals(Menu*, Menu*) const;
 };
 
 #endif

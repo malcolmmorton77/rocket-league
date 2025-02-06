@@ -4,7 +4,8 @@
 #include "menu.hpp"
 #include <math.h>
 
-Menu::Menu(std::string name, int score, int goals, int assists, int saves, int shots){
+Menu::Menu(std::string team_id, std::string name, int score, int goals, int assists, int saves, int shots){
+    this->team_id = team_id;
     this->name = name;
     this->score = score;
     this->goals = goals;
@@ -17,12 +18,13 @@ void Menu::assignValues(std::string line){
     std::vector<std::string> values;
     boost::split(values, line, boost::is_any_of(","));
 
-    name = values[0];
-    score = stoi(values[1]);
-    goals = stoi(values[2]);
-    assists = stoi(values[3]);
-    saves = stoi(values[4]);
-    shots = stoi(values[5]);
+    team_id = values[0];
+    name = values[1];
+    score = stoi(values[2]);
+    goals = stoi(values[3]);
+    assists = stoi(values[4]);
+    saves = stoi(values[5]);
+    shots = stoi(values[6]);
 }
 
 int Menu::goalPoints() const{
@@ -60,8 +62,8 @@ int Menu::miscPoints() const{
 Menu::~Menu(){};
 
 void Menu::print() const{
-    std::cout << "Player: " << name << "\n";
-    std::cout << "========================\n";
+    std::cout << "Team: " << team_id << " Player: " << name << "\n";
+    std::cout << "===============================================\n";
     std::cout << "Score: " << score << "\n"
                 << "Goals: " << goals << "\n"
                 << "Assists: " << assists << "\n"
@@ -86,4 +88,16 @@ void Menu::printMatchPoints() const{
         std::cout << name << " returned every save for a goal against.\n";
     else
         std::cout << name << " was not as zealous about vengeance.\n";
+}
+
+// this is useful math, but we need a hashmap to compare cyclically
+bool Menu::calculateStolenGoals(Menu *player1, Menu *player2) const{
+    // check that there is a positive difference between player1 shots and goals
+    // then check if player2 has a positive difference in goals that could fit inside
+    // of player1's difference of shots and goals
+    return (player1->goals < player1->shots && (player2->goals - player2->shots <= player1->shots - player1->goals) );
+    // 6 < 8 && (4-2 <= 8-6) this could be two stolen goals
+    // 7 < 8 && (4-2 <= 8-7) this means they had to have stolen a goal, but no more than 1 from this player
+    // I think this needs a hashmap to group the team mates together, because we are running
+    // into a problem of cyclical comparisons and potential problems with this oneliner
 }
