@@ -1,7 +1,7 @@
+#include <fstream> //ifstream
 #include <iostream>
 #include <sstream> //std::stringstream; std::stringbuf
 #include <string> //std::string
-#include <fstream> //ifstream
 #include <vector>
 #include "menu.hpp"
 
@@ -15,7 +15,7 @@ int main(int num_args, char *arg_string[]){
     }
     
     std::cout << "Processing csv " << arg_string[1] << "\n"
-              << "If this is not correct, the program will terminate undesirably.\n";
+              << "If the syntax inside the csv is not correct, the program will terminate undesirably.\n";
     std::string csv_name = arg_string[1];
     std::ifstream csv_reader;
     std::string line;
@@ -35,10 +35,16 @@ int main(int num_args, char *arg_string[]){
 
     csv_reader.close();
 
-    for(std::vector<Menu>::iterator it = player_list.begin(); it < player_list.end(); it++)
+    for(std::vector<Menu>::iterator it = player_list.begin(); it != player_list.end()-1; it++)
     {
-        it->printMatchPoints();
-        it->printPoints();
+        if(it->getTeamId() == (std::next(it)->getTeamId()))
+        {
+            std::cout << it->getName() << " and " << std::next(it)->getName() << " are on the same team\n";
+            
+            // We would want to call calculate stolen goals between any two players if they are on the same team
+        }
+        // it->printMatchPoints();
+        // it->printPoints();
     }
 
     return 0;
