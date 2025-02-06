@@ -1,6 +1,7 @@
 ## rocket-league
 
 The aim of this project is to take in a csv file of data from Rocket League:
+- Team_Id as a string
 - Player as a string
 - Score as an integer
 - Goals as an integer
@@ -10,6 +11,7 @@ The aim of this project is to take in a csv file of data from Rocket League:
 
 These datums will be collected on a per person basis, stored as a `Menu` object.
 
+Team_Id is a unique, 5 character string used to identify members of the team.
 Then, these datums will be used to calculate as much of the accounted for points as possible.
 By subtracting these accounted for points from the total score, we can get the points earned
 from ball touches (2 pts per touch, unless from a first touch), epic saves, special goals, demolishing,
@@ -53,9 +55,9 @@ cmake --build --preset rocket-league
 ```
 
 ### Format of the csv
-The header of the csv should be comprised of "Player,Score,Goals,Assists,Saves,Shots"
+The header of the csv should be comprised of "Team_Id,Player,Score,Goals,Assists,Saves,Shots"
 From here, I just inputted the raw data from each game I played with Bots as integers:
-Me,773,4,2,0,7
+aBc12,Me,773,4,2,0,7
 
 ### Analysis
 After looking at a lot of the data and replaying certain matches, I have developed a lot of insight on the mobility of the player.
