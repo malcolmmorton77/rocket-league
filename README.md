@@ -87,4 +87,4 @@ This can be seen in the data when the goals for a player are larger than their s
 |   Tex     |   2       |   2       |
 
 A simple check that this occurred is that a player has more goals than shots on goal. We can safely eliminate any players as being involved in this trade-off by comparing their
-goals and shots. If they are equal, it's realistic to say that every shot on goal was their goal. If they have extra shots on goal, we will have to account for that and account for some ambiguity clause.
+goals and shots. If they are equal, it's realistic to say that every shot on goal was their goal. If they have extra shots on goal, we will have to account for some ambiguity clause.
