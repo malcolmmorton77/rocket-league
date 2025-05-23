@@ -4,7 +4,8 @@
 #include "menu.hpp"
 #include <math.h>
 
-Menu::Menu(std::string name, int score, int goals, int assists, int saves, int shots){
+Menu::Menu(std::string team_id, std::string name, int score, int goals, int assists, int saves, int shots){
+    this->team_id = team_id;
     this->name = name;
     this->score = score;
     this->goals = goals;
@@ -17,12 +18,13 @@ void Menu::assignValues(std::string line){
     std::vector<std::string> values;
     boost::split(values, line, boost::is_any_of(","));
 
-    name = values[0];
-    score = stoi(values[1]);
-    goals = stoi(values[2]);
-    assists = stoi(values[3]);
-    saves = stoi(values[4]);
-    shots = stoi(values[5]);
+    team_id = values[0];
+    name = values[1];
+    score = stoi(values[2]);
+    goals = stoi(values[3]);
+    assists = stoi(values[4]);
+    saves = stoi(values[5]);
+    shots = stoi(values[6]);
 }
 
 int Menu::goalPoints() const{
@@ -60,8 +62,8 @@ int Menu::miscPoints() const{
 Menu::~Menu(){};
 
 void Menu::print() const{
-    std::cout << "Player: " << name << "\n";
-    std::cout << "========================\n";
+    std::cout << "Team: " << team_id << " Player: " << name << "\n";
+    std::cout << "===============================================\n";
     std::cout << "Score: " << score << "\n"
                 << "Goals: " << goals << "\n"
                 << "Assists: " << assists << "\n"
@@ -79,4 +81,29 @@ void Menu::printPoints() const{
     std::cout << "Points from Playmakers: " << playmakerPoints() << " and Assists: " << assists << std::endl;
     std::cout << "Points from Shots: " << shotPoints() << " and Shots: " << shots << std::endl;
     std::cout << "Points from ball touches, special goals, epic saves, clearing and centering: " << miscPoints() << "\n\n";
+}
+
+void Menu::printMatchPoints() const{
+    if (goals != 0 && goals == saves)
+        std::cout << name << " returned every save for a goal against.\n";
+    else
+        std::cout << name << " was not as zealous about vengeance.\n";
+}
+
+int Menu::calculateStolenGoals(Menu *player1, Menu *player2) const{
+    // For both cases, check that there is a possibility of stolen goals
+    // check that either player has a positive difference of goals - shots
+    // then check if the other player has a positive difference of shots - goals
+    // that could account for those missing shots
+    if (player1->goals > player1->shots){
+        if ( player2->shots - player2->goals >= player1->goals - player1->shots ) {
+            return (player1->goals - player1->shots);
+        }
+    }
+    else if (player2->goals > player2->shots){
+        if ( player1->shots - player1->goals >= player2->goals - player2->shots ) {
+            return (player2->goals - player2->shots);
+        }
+    }
+    return -1;
 }
