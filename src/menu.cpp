@@ -90,14 +90,20 @@ void Menu::printMatchPoints() const{
         std::cout << name << " was not as zealous about vengeance.\n";
 }
 
-// this is useful math, but we need a hashmap to compare cyclically
-bool Menu::calculateStolenGoals(Menu *player1, Menu *player2) const{
-    // check that there is a positive difference between player1 shots and goals
-    // then check if player2 has a positive difference in goals that could fit inside
-    // of player1's difference of shots and goals
-    return (player1->goals < player1->shots && (player2->goals - player2->shots <= player1->shots - player1->goals) );
-    // 6 < 8 && (4-2 <= 8-6) this could be two stolen goals
-    // 7 < 8 && (4-2 <= 8-7) this means they had to have stolen a goal, but no more than 1 from this player
-    // I think this needs a hashmap to group the team mates together, because we are running
-    // into a problem of cyclical comparisons and potential problems with this oneliner
+int Menu::calculateStolenGoals(Menu *player1, Menu *player2) const{
+    // For both cases, check that there is a possibility of stolen goals
+    // check that either player has a positive difference of goals - shots
+    // then check if the other player has a positive difference of shots - goals
+    // that could account for those missing shots
+    if (player1->goals > player1->shots){
+        if ( player2->shots - player2->goals >= player1->goals - player1->shots ) {
+            return (player1->goals - player1->shots);
+        }
+    }
+    else if (player2->goals > player2->shots){
+        if ( player1->shots - player1->goals >= player2->goals - player2->shots ) {
+            return (player2->goals - player2->shots);
+        }
+    }
+    return -1;
 }

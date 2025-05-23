@@ -85,8 +85,9 @@ public:
     void printMatchPoints() const;
 
     /* name: calculateStolenGoals
-     * description: calculates if there were any goals stolen and from who*/
-    bool calculateStolenGoals(Menu*, Menu*) const;
+     * description: calculates if there were any goals stolen
+     * return: the number of goals stolen*/
+    int calculateStolenGoals(Menu*, Menu*) const;
 };
 
 #endif
