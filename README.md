@@ -93,12 +93,12 @@ I catalogued data in my csv and ran it through the first draft of the calculateS
 > The current solution only checks one teammate with the next rather than comparing all members of the team to each other.
 > So, with this real data, we are comparing Me to Stinger, and Stinger to Rex, but never Me to Rex.
 
-##### Here's the core logic of the function:
+#### Here's the core logic of the function:
 1. Check that one of the provided players has more goals than shots
 2. Check that the difference in shots and goals of the other player is positive and greater than the original player's goal difference
 3. Return the difference of the original player's goal difference
 
-##### Limitations:
+#### Limitations:
 - No hashmap of teammates which makes comparisons difficult to analyze further
 - Does not account for the possibility that one teammate stole goals from the other two
 - Does not account for the possibility that 2 teammates each stole a goal from the third teammate.
